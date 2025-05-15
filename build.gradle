@@ -1,0 +1,36 @@
+POC// build.gradle
+plugins {
+	id 'org.springframework.boot' version '3.3.4'
+	id 'io.spring.dependency-management' version '1.1.6'
+	id 'java'
+}
+
+group = 'com.honeynext'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot starters (includes @Autowired and @Service)
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// MySQL connector
+	runtimeOnly 'mysql:mysql-connector-java:8.0.33'
+
+	// Lombok for reducing boilerplate
+	implementation 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Testing dependencies
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.testcontainers:mysql:1.20.2'
+	testImplementation 'org.testcontainers:junit-jupiter:1.20.2'
+}
+
+test {
+	useJUnitPlatform()
+}
